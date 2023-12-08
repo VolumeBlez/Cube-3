@@ -19,8 +19,7 @@ public class PlayerSetup : MonoBehaviour
 
         presenter
             .RegisterService(new PlayerAudioService(model, presenter, model.Data.AudioSource))
-            .RegisterService(new PlayerRotateService(model, presenter))
-            .RegisterService(new PlayerMoveService(model, presenter))
+            .RegisterService(new PlayerMotorService(model, presenter))
             .RegisterService(new PlayerRayService(model, presenter))
             .RegisterService(new PlayerDieService(model, presenter));
 

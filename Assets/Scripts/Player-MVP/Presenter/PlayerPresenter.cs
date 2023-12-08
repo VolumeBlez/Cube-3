@@ -22,4 +22,10 @@ public class PlayerPresenter : IPlayerPresenter
     {
         return (T)_registeredServiceMap[typeof(T)];
     }
+
+    public void SetModel(IPlayerModel model)
+    {
+        throw new NotImplementedException();
+    }
+
 }

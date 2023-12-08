@@ -1,11 +1,9 @@
+using System;
 using UnityEngine;
+using Zenject;
 
-public class InputHandler : MonoBehaviour
+public class InputHandler : IDisposable
 {
-    [SerializeField] private PlayerMoveView _move;
-    [SerializeField] private PlayerRotateView _rotate;
-    [SerializeField] private PlayerInteractView _interact;
-
     private Input _input;
 
     public Input Input 
@@ -17,20 +15,35 @@ public class InputHandler : MonoBehaviour
         }
     }
 
-    public void Start()
+    public InputHandler()
     {
         Input.Enable();
-
-        Input.Gameplay.Movement.performed += ctx => _move.SetDirection(ctx.ReadValue<Vector2>());
-        Input.Gameplay.Movement.canceled += ctx => _move.ResetDirection();
-
-        Input.Gameplay.Look.performed += ctx => _rotate.SetDirection(ctx.ReadValue<Vector2>());
-
-        Input.Gameplay.Interact.performed += ctx => _interact.PerformInteract();
     }
 
-    public void OnPauseGame()
+    public void Dispose()
     {
         Input.Disable();
     }
+
+    // public void Start()
+    // {
+    //     PlayerMoveView
+
+    //     Input.Enable();
+
+    //     Input.Gameplay.Movement.performed += ctx => _move.SetDirection(ctx.ReadValue<Vector2>());
+    //     Input.Gameplay.Movement.canceled += ctx => _move.ResetDirection();
+
+    //     Input.Gameplay.Interact.performed += ctx => _interact.PerformInteract();
+    // }
+
+    // public void OnEnable() 
+    // {
+    //     Input.Enable();
+    // }
+
+    // public void OnPauseGame()
+    // {
+    //     Input.Disable();
+    // }
 }
