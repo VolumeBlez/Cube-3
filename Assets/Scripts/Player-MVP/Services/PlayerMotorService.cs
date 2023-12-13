@@ -12,7 +12,6 @@ public class PlayerMotorService : BasePlayerService
     public PlayerMotorService(IPlayerModel model, IPlayerPresenter presenter) : base(model, presenter)
     {
         _controller = Model.Data.Controller;
-        //_cameraTransform = Model.Data.Camera.transform;
         _cameraTransform = Camera.main.transform;
         _motorObject = Model.Data.MotorObject;
         _smooth = Model.Data.RotateSmooth;
@@ -28,7 +27,6 @@ public class PlayerMotorService : BasePlayerService
         if(direction.magnitude >= 0.1f)
         {
             float rotationAngle = Mathf.Atan2(moveDirection.x, moveDirection.y) * Mathf.Rad2Deg + _cameraTransform.eulerAngles.y;
-            //float rotationAngle = Mathf.Atan2(moveDirection.x, moveDirection.y) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(_motorObject.eulerAngles.y, rotationAngle, ref _smoothVelocity, _smooth);
 
             _motorObject.rotation = Quaternion.Euler(0f, angle, 0f);

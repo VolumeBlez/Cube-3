@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 400261448290561666}
   - component: {fileID: 7398552380811979512}
   - component: {fileID: 1985515466736290369}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +83,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3695799006794697643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5745203471572075760}
+  m_Layer: 6
+  m_Name: PlacePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5745203471572075760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3695799006794697643}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 1.72}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1494462038766425970}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5523037139178629415
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +129,8 @@ GameObject:
   - component: {fileID: 2117162785584247595}
   - component: {fileID: 8273418337114896192}
   - component: {fileID: 3230393692215173151}
-  m_Layer: 0
+  - component: {fileID: 6788759297998850700}
+  m_Layer: 6
   m_Name: Actor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,6 +151,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 334159089785857535}
+  - {fileID: 5745203471572075760}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &1527705672587134187
@@ -165,7 +198,6 @@ MonoBehaviour:
   _data:
     <Controller>k__BackingField: {fileID: 1527705672587134187}
     <MotorObject>k__BackingField: {fileID: 1494462038766425970}
-    <Camera>k__BackingField: {fileID: 0}
     <AudioSource>k__BackingField: {fileID: 0}
     <MouseSens>k__BackingField: 13
     <RotateSmooth>k__BackingField: 0.15
@@ -175,6 +207,7 @@ MonoBehaviour:
   _views:
   - {fileID: 3528333090592417835}
   - {fileID: 2117162785584247595}
+  - {fileID: 6788759297998850700}
 --- !u!114 &3528333090592417835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +256,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f8932d6dd72be1429de4e04bef08a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6788759297998850700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5523037139178629415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c1a2685732a144ab4afb5f8c0401a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trapPrefab: {fileID: 6102041939719579571, guid: 9cbd41d87f97e9941864cfc0e5906545, type: 3}
+  _placePoint: {fileID: 5745203471572075760}
 --- !u!1 &6368330401492578704
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +281,7 @@ GameObject:
   - component: {fileID: 8561880295590804496}
   - component: {fileID: 4824273960623292388}
   - component: {fileID: 1436768865941858425}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Jacket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +364,7 @@ GameObject:
   - component: {fileID: 334159089785857535}
   - component: {fileID: 354064320205548715}
   - component: {fileID: 872696796145182205}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

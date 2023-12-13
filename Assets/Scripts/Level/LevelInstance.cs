@@ -9,22 +9,11 @@ public class LevelInstance : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(ChangeDayStates());
+        SetNight();
     }
 
     private void SetNight()
     {
-        _machine.EnterIn<StormyNightState>();
-    }
-
-    IEnumerator ChangeDayStates()
-    {
-        _machine.EnterIn<ClearDayState>();
-        yield return new WaitForSeconds(4);
-        _machine.EnterIn<StormDayState>();
-        yield return new WaitForSeconds(4);
-        _machine.EnterIn<StormyNightState>();
-        yield return new WaitForSeconds(4);
         _machine.EnterIn<ClearNightState>();
     }
 
