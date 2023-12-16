@@ -1,20 +1,16 @@
-using System.Collections;
 using UnityEngine;
 using Zenject;
 
 public class LevelInstance : MonoBehaviour
 {
     [Inject]
-    private DayTimeStateMachine _machine;
-
-    void Start()
+    public void InitObserver(GameObserver observer, PlayerSetup player, InputHandler input, EnemyStateMachine enemy)
     {
-        SetNight();
-    }
 
-    private void SetNight()
-    {
-        _machine.EnterIn<ClearNightState>();
-    }
+        observer.AddListener(player);
+        observer.AddListener(input);
+        observer.AddListener(enemy);
 
+        observer.StartGame();
+    }
 }

@@ -25,12 +25,20 @@ public class ChaseState : IEnemyState
 
     private void CheckPlayerInSight()
     {
-        bool playerInSightRange = Physics.CheckSphere(_self.position, _stateMachine.Config.SightRange, _stateMachine.Config.WhatIsPlayer);
-        if(playerInSightRange){
-            Chase();
-        }
-        else{
-            _stateMachine.EnterIn<PatrolState>();
+        bool playerInAttackRange = Physics.CheckSphere(_self.position, _stateMachine.Config.AttackRange, _stateMachine.Config.WhatIsPlayer);
+        
+        if(playerInAttackRange)
+            _stateMachine.EnterIn<AttackState>();
+        else
+        {
+            bool playerInSightRange = Physics.CheckSphere(_self.position, _stateMachine.Config.SightRange, _stateMachine.Config.WhatIsPlayer);
+
+            if(playerInSightRange){
+                Chase();
+            }
+            else{
+                _stateMachine.EnterIn<PatrolState>();
+            }
         }
     }
 

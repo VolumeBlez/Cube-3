@@ -4,28 +4,25 @@ using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 
-public class EnemyStateMachine : MonoBehaviour
+public class EnemyStateMachine : MonoBehaviour, IStartGameListener, IPauseGameListener, IResumeGameListener
 {
     [field: SerializeField] public NavMeshAgent Agent { get; private set; }
     [field: SerializeField] public EnemyConfig Config { get; private set; }
     private Dictionary<Type, IEnemyState> _states;
     private IEnemyState _currentState;
 
-    public Transform SelfTransform => transform;
-
     [Inject]
     public PlayerIndicator Player { get; private set; }
 
-    private void Start()
+    private void Init()
     {
         _states = new Dictionary<Type, IEnemyState>()
         {
             [typeof(PatrolState)] = new PatrolState(this),
-            [typeof(ChaseState)] = new ChaseState(this)
+            [typeof(ChaseState)] = new ChaseState(this),
+            [typeof(StopState)] = new StopState(this),
+            [typeof(AttackState)] = new AttackState(this)
         };
-
-        Debug.Log(Config);
-        EnterIn<PatrolState>();
     }
 
     public void EnterIn<TState>() where TState : IEnemyState
@@ -40,6 +37,22 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void Update()
     {
-        //_currentState.Update();
+        _currentState?.Update();
+    }
+
+    public void OnStartGame()
+    {
+        Init();
+        EnterIn<PatrolState>();
+    }
+
+    public void OnPauseGame()
+    {
+        EnterIn<StopState>();
+    }
+
+    public void OnResumeGame()
+    {
+        EnterIn<PatrolState>();
     }
 }

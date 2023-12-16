@@ -15,5 +15,8 @@ MonoBehaviour:
   <WhatIsPlayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 64
-  <SightRange>k__BackingField: 9
+  <SightRange>k__BackingField: 10
+  <AttackRange>k__BackingField: 5
   <WalkPointRange>k__BackingField: 25
+  <Damage>k__BackingField: 15
+  <AttackCoolDown>k__BackingField: 2

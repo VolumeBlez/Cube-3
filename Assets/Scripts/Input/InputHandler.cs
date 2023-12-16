@@ -1,8 +1,4 @@
-using System;
-using UnityEngine;
-using Zenject;
-
-public class InputHandler : IDisposable
+public class InputHandler : IStartGameListener, IPauseGameListener, IResumeGameListener
 {
     private Input _input;
 
@@ -15,35 +11,18 @@ public class InputHandler : IDisposable
         }
     }
 
-    public InputHandler()
+    public void OnPauseGame()
+    {
+        Input.Gameplay.Disable();
+    }
+
+    public void OnResumeGame()
+    {
+        Input.Gameplay.Enable();
+    }
+
+    public void OnStartGame()
     {
         Input.Enable();
     }
-
-    public void Dispose()
-    {
-        Input.Disable();
-    }
-
-    // public void Start()
-    // {
-    //     PlayerMoveView
-
-    //     Input.Enable();
-
-    //     Input.Gameplay.Movement.performed += ctx => _move.SetDirection(ctx.ReadValue<Vector2>());
-    //     Input.Gameplay.Movement.canceled += ctx => _move.ResetDirection();
-
-    //     Input.Gameplay.Interact.performed += ctx => _interact.PerformInteract();
-    // }
-
-    // public void OnEnable() 
-    // {
-    //     Input.Enable();
-    // }
-
-    // public void OnPauseGame()
-    // {
-    //     Input.Disable();
-    // }
 }

@@ -4,17 +4,22 @@ using Zenject;
 public class PlayerInstaller : MonoInstaller
 {
     [SerializeField] private Transform _playerSpawnPoint;
-    [SerializeField] private PlayerIndicator _playerPrefab;
+    [SerializeField] private PlayerIndicator _playerIndicator;
+    [SerializeField] private PlayerSetup _playerSetup;
 
     public override void InstallBindings()
     {
-        PlayerIndicator player = Container
-            .InstantiatePrefabForComponent<PlayerIndicator>(_playerPrefab, _playerSpawnPoint.position, Quaternion.identity, null);
+        // PlayerIndicator player = Container
+        //     .InstantiatePrefabForComponent<PlayerIndicator>(_playerPrefab, _playerSpawnPoint.position, Quaternion.identity, null);
     
         Container
             .Bind<PlayerIndicator>()
-            .FromInstance(player)
+            .FromInstance(_playerIndicator)
             .AsSingle();
-            // Non Lazy
+            
+        Container
+            .Bind<PlayerSetup>()
+            .FromInstance(_playerSetup)
+            .AsSingle();
     }
 }

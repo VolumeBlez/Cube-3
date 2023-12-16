@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerSetup : MonoBehaviour
+public class PlayerSetup : MonoBehaviour, IStartGameListener
 {
     [Header("Player Datas")]
     [SerializeField] private PlayerAudioClipsData _audioClips;
@@ -10,7 +10,7 @@ public class PlayerSetup : MonoBehaviour
     [SerializeField] private PlayerIndicator _indicator;
     [SerializeField] private BasePlayerView[] _views;
 
-    public void Start()
+    public void OnStartGame()
     {
         PlayerModel model = new PlayerModel(_data, _audioClips);
         IPlayerPresenter presenter = new PlayerPresenter(model);
