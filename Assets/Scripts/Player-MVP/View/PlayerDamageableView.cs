@@ -1,6 +1,6 @@
 public class PlayerDamageableView : BasePlayerView, IDamageable
 {
-    private Health _health;
+    private ReactiveProperty _health;
 
     public void ApplyDamage(int value)
     {

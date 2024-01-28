@@ -2,7 +2,8 @@ public class PlayerModel : IPlayerModel
 {
     public PlayerData Data { get; }
     public IInventory Inventory { get; }
-    public Health Health { get; }
+    public ReactiveProperty Health { get; }
+    public ReactiveProperty Freezing { get; }
     public PlayerAudioClipsData AudioClips { get; }
 
     public PlayerModel(PlayerData data, PlayerAudioClipsData clips)
@@ -11,6 +12,7 @@ public class PlayerModel : IPlayerModel
         AudioClips = clips;
 
         Inventory = new Inventory();
-        Health = new Health(Data.StartMaxHealth);
+        Health = new ReactiveProperty(100);
+        Freezing = new ReactiveProperty(100);
     }
 }

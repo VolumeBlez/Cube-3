@@ -16,7 +16,7 @@ public class EnemyStateMachine : MonoBehaviour, IStartGameListener, IPauseGameLi
 
     private void Init()
     {
-        _states = new Dictionary<Type, IEnemyState>()
+        _states = new Dictionary<Type, IEnemyState>
         {
             [typeof(PatrolState)] = new PatrolState(this),
             [typeof(ChaseState)] = new ChaseState(this),
